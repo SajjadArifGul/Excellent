@@ -37,3 +37,7 @@ html {
 .site-title{
     font-size: 30px
 }
+
+.fileUpload {
+    line-height: 1.1;
+}

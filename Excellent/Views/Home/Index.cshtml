@@ -1,52 +1,73 @@
-﻿<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <h1 class="display-4">Pricing</h1>
-    <p class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p>
+﻿@model Excellent.Models.HomeViewModel
+
+<div class="pricing-header mx-auto text-center my-4">
+    <h1 class="display-4">Excel.lent</h1>
+    <p class="lead mb-0">
+        Upload any Excel file and enter the sheet name from Excel file. The project will display its content in a nice table below.
+    </p>
+    <small class="text-danger">Only supports Excel files with xlx and xlsx extensions.</small>
 </div>
 
-<div class="card-deck mb-3 text-center">
-    <div class="card mb-4 shadow-sm">
-        <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Free</h4>
-        </div>
-        <div class="card-body">
-            <h1 class="card-title pricing-card-title">$0 <small class="text-muted">/ mo</small></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-                <li>10 users included</li>
-                <li>2 GB of storage</li>
-                <li>Email support</li>
-                <li>Help center access</li>
-            </ul>
-            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</button>
+<form method="post" enctype="multipart/form-data">
+    <div class="input-group mb-3">
+        <input type="file" class="form-control fileUpload" id="excelFile" name="excelFile" required value="@Model.FileName">
+        <input type="text" class="form-control" name="sheetName" placeholder="Sheet Name i.e Sheet1" required value="@Model.SheetName">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit">Submit</button>
         </div>
     </div>
-    <div class="card mb-4 shadow-sm">
-        <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Pro</h4>
-        </div>
-        <div class="card-body">
-            <h1 class="card-title pricing-card-title">$15 <small class="text-muted">/ mo</small></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-                <li>20 users included</li>
-                <li>10 GB of storage</li>
-                <li>Priority email support</li>
-                <li>Help center access</li>
-            </ul>
-            <button type="button" class="btn btn-lg btn-block btn-primary">Get started</button>
+</form>
+
+@if (Model.Data != null && Model.IsSuccessfull)
+{
+    <div class="d-flex justify-content-center">
+        <div id="Loader" class="my-5 spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
         </div>
     </div>
-    <div class="card mb-4 shadow-sm">
-        <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Enterprise</h4>
-        </div>
-        <div class="card-body">
-            <h1 class="card-title pricing-card-title">$29 <small class="text-muted">/ mo</small></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-                <li>30 users included</li>
-                <li>15 GB of storage</li>
-                <li>Phone and email support</li>
-                <li>Help center access</li>
-            </ul>
-            <button type="button" class="btn btn-lg btn-block btn-primary">Contact us</button>
-        </div>
+
+    <div id="ExcelDataTable" class="table-container" style="display:none;">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-light">
+                <tr>
+                    @foreach (System.Data.DataColumn col in Model.Data.Columns)
+                    {
+                        <th>@col.Caption</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (System.Data.DataRow row in Model.Data.Rows)
+                {
+                    <tr>
+                        @foreach (var cell in row.ItemArray)
+                        {
+                            <td>@cell.ToString()</td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
-</div>
+
+    @section scripts{
+        <script src="~/Scripts/jquery.doubleScroll.js"></script>
+        <script>
+            $(document).ready(function () {
+                setTimeout(showContent, 1000);
+            });
+
+            function showContent() {
+                $('#Loader').hide();
+                $('#ExcelDataTable').show();
+                $('.table-container').doubleScroll();
+            }
+        </script>
+    }
+}
+else if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="alert alert-danger" role="alert">
+        @Html.Raw(Model.ErrorMessage)
+    </div>
+}

@@ -1,6 +1,6 @@
 ﻿
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-100">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,7 +11,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
+<body class="d-flex flex-column h-100">
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
         <h1 class="my-0 mr-md-auto font-weight-normal site-title">Excellent</h1>
         <a class="btn btn-outline-primary" href="http://www.sajjadgul.com/" target="_blank">Author</a>
@@ -21,7 +21,7 @@
         @RenderBody()
     </div>
 
-    <footer class="mt-5 py-5 text-muted text-center text-small bg-light">
+    <footer class="mt-auto py-5 text-muted text-center text-small bg-light">
         <p class="mb-1">© @DateTime.Now.Year Excellent by <a href="http://www.sajjadgul.com/" target="_blank">Sajjad Arif Gul</a>. Get <a href="https://github.com/SajjadArifGul/Excellent" target="_blank">Source Code</a>.</p>
     </footer>
 
