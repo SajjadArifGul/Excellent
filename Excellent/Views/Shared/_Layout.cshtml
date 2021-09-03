@@ -1,39 +1,29 @@
-﻿<!DOCTYPE html>
-<html>
+﻿
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Demo of Excellent. Upload and Read Contents of Any Excel File.">
+    <meta name="author" content="Sajjad Arif Gul">
+    <title>Excellent - Upload and Read Contents of Any Excel File</title>
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-            </div>
-        </div>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+        <h1 class="my-0 mr-md-auto font-weight-normal site-title">Excellent</h1>
+        <a class="btn btn-outline-primary" href="http://www.sajjadgul.com/" target="_blank">Author</a>
     </div>
-    <div class="container body-content">
+
+    <div class="container">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
+
+    <footer class="mt-5 py-5 text-muted text-center text-small bg-light">
+        <p class="mb-1">© @DateTime.Now.Year Excellent by <a href="http://www.sajjadgul.com/" target="_blank">Sajjad Arif Gul</a>. Get <a href="https://github.com/SajjadArifGul/Excellent" target="_blank">Source Code</a>.</p>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
