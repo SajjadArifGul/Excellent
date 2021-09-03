@@ -1,13 +1,5 @@
 ﻿@model Excellent.Models.HomeViewModel
 
-<div class="pricing-header mx-auto text-center my-4">
-    <h1 class="display-4">Excel.lent</h1>
-    <p class="lead mb-0">
-        Upload any Excel file and enter the sheet name from Excel file. The project will display its content in a nice table below.
-    </p>
-    <small class="text-danger">Only supports Excel files with xlx and xlsx extensions.</small>
-</div>
-
 <form method="post" enctype="multipart/form-data">
     <div class="input-group mb-3">
         <input type="file" class="form-control fileUpload" id="excelFile" name="excelFile" required value="@Model.FileName">

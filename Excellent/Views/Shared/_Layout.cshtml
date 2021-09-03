@@ -12,12 +12,17 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body class="d-flex flex-column h-100">
-    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-        <h1 class="my-0 mr-md-auto font-weight-normal site-title">Excellent</h1>
-        <a class="btn btn-outline-primary" href="http://www.sajjadgul.com/" target="_blank">Author</a>
+    <div class="bg-light py-4">
+        <div class="pricing-header mx-auto text-center">
+            <h1 class="display-4">Excel.lent</h1>
+            <p class="lead">
+                Upload any Excel file and enter the sheet name from Excel file. The project will display its content in a nice table below.
+            </p>
+            <small class="text-danger">Only supports Excel files with xlx and xlsx extensions.</small>
+        </div>
     </div>
 
-    <div class="container">
+    <div class="container py-4">
         @RenderBody()
     </div>
 
